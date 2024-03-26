@@ -24,7 +24,7 @@ app.post("/users", (req, res) => {
     
     db.query(sqlInsert,[name, email, telefone], (err, result) => {
         if(err) console.log(err + "Ocorreu um erro ao conectar no banco de dados")
-        res.send(result)
+        return res.json({status: "sucesso"});
     })
 })
 
