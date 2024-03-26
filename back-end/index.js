@@ -28,8 +28,11 @@ app.post("/users", (req, res) => {
     })
 })
 
-app.get("/", (req, res) => {
-    res.send("Funcionou")
+app.get("/get", (req, res) => {
+   const sqlGet = "SELECT * FROM form";
+   db.query(sqlGet,(err, result) => {
+     res.send(result)
+   })
 })
 app.listen(port, (req, res) =>{
    console.log("rodando")
