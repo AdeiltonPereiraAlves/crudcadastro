@@ -34,6 +34,20 @@ app.get("/get", (req, res) => {
      res.send(result)
    })
 })
+
+app.delete("/delete/:id", (req, res) =>{
+   const id = req.params.id;
+    
+    const sqlDelete = "DELETE FROM form WHERE id = ?";
+    db.query(sqlDelete,[id], (err, result) => {
+        if(err){
+            console.log(err + "erro ao deletar no banco")
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
 app.listen(port, (req, res) =>{
    console.log("rodando")
     

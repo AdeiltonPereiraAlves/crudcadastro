@@ -38,7 +38,7 @@ const Form = () => {
     useEffect(() => {
         axios.get("http://localhost:3003/get")
             .then(res => setLista(res.data))
-    }, [])
+    }, [lista])
     return (
         <div className='container'>
           
