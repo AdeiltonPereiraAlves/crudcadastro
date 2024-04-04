@@ -48,6 +48,36 @@ app.delete("/delete/:id", (req, res) =>{
         }
     })
 })
+
+app.put("/update/:id", (req, res) => {
+    const userId = req.params.id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const telefone = req.body.telefone;
+   
+    sqlUpdate = "UPDATE form SET  name = ? , email = ?, telefone = ?  WHERE id = ?";
+
+    db.query(sqlUpdate, [ name, email, telefone, userId ] , (err, result) => {
+         if(err) {
+            console.log(err + "Erro ao editar no banco de dados")
+         }
+         else{
+            res.send(result + "Usuario editado com sucesso")
+         }
+    })
+
+})
+
+// app.get("/getuser/:id", (req, res) => {
+//     const id = req.params.id;
+//     const sqlGetUser = "SELECT * FROM form WHERE id = ? ";
+   
+//     db.query(sqlGetUser,[id], (err, result) => {
+//         res.send(result)
+//     })
+
+// })
+
 app.listen(port, (req, res) =>{
    console.log("rodando")
     
